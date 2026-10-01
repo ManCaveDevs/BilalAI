@@ -76,6 +76,12 @@ An admin with **Manage Server** runs:
 /test prayer:Dhuhr
 ```
 
+You can also check the times before involving Discord at all. This calls the live Aladhan API and prints today's windows exactly as the bot will use them:
+
+```bash
+npm run check-times -- London "United Kingdom"
+```
+
 Check `/schedule` against your local mosque timetable. If it is off, try a different `/config method`. If it is still a few minutes off, use `/config adjust` to shift individual prayers.
 
 ## Commands
@@ -125,12 +131,15 @@ The bot is a single always-on process using very little CPU and memory. Any smal
 ## Development
 
 ```bash
-npm test          # vitest
+npm test          # unit tests (fast)
+npm run test:e2e  # end-to-end run (about 80 seconds)
 npm run lint
 npm run typecheck
 ```
 
-Tests cover the prayer window maths (including DST, month boundaries and high latitudes), the Aladhan client, caching, the scheduler (dedupe, grace window, pause), the voice queue, channel selection, clip validation and the command handlers.
+The end-to-end test (`test/e2e`) runs the whole bot with only Discord's network replaced. It uses a real HTTP server standing in for Aladhan, a real SQLite file, the real scheduler over two simulated days (including the October clock change, a restart, an Aladhan outage, an empty channel, a toggle and a pause), the real command handlers, and plays every announcement through `@discordjs/voice`'s real audio player using the shipped clips.
+
+The unit tests cover the prayer window maths (including DST, month boundaries and high latitudes), the Aladhan client, caching, the scheduler (dedupe, grace window, pause), the voice queue, channel selection, clip validation and the command handlers.
 
 ## Troubleshooting
 

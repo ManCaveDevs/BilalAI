@@ -16,5 +16,5 @@
     "rootDir": ".",
     "sourceMap": true
   },
-  "include": ["src", "scripts", "test", "vitest.config.ts"]
+  "include": ["src", "scripts", "test", "vitest.config.ts", "vitest.e2e.config.ts"]
 }

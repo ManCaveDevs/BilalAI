@@ -15,9 +15,11 @@
     "deploy-commands": "tsx scripts/deploy-commands.ts",
     "deploy-commands:prod": "node dist/scripts/deploy-commands.js",
     "gen-audio": "bash scripts/gen-audio.sh",
+    "check-times": "tsx scripts/check-times.ts",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:e2e": "vitest run --config vitest.e2e.config.ts"
   },
   "dependencies": {
     "@discordjs/voice": "^0.19.2",

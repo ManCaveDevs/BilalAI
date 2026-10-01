@@ -184,7 +184,8 @@ export class AladhanClient {
         // 4xx (bad city, bad params) will not succeed on retry.
         if (res.status >= 400 && res.status < 500 && res.status !== 429) {
           const body = await res.json().catch(() => undefined);
-          throw new AladhanError(`Aladhan returned ${res.status}: ${describe(body)}`, false);
+          // Aladhan's own message (e.g. "Unable to locate city and country.") is shown to users.
+          throw new AladhanError(describe(body, undefined, `Aladhan returned ${res.status}`), false);
         }
         lastError = new AladhanError(`Aladhan returned ${res.status}`, true);
       } catch (err) {
@@ -216,9 +217,9 @@ function todayParam(): string {
   return `${pad(d.getUTCDate())}-${pad(d.getUTCMonth() + 1)}-${d.getUTCFullYear()}`;
 }
 
-function describe(body: unknown, error?: z.ZodError): string {
+function describe(body: unknown, error?: z.ZodError, fallback = 'no details'): string {
   if (body && typeof body === 'object' && 'data' in body && typeof (body as { data: unknown }).data === 'string') {
     return (body as { data: string }).data;
   }
-  return error ? error.issues.slice(0, 3).map((i) => `${i.path.join('.')}: ${i.message}`).join('; ') : 'no details';
+  return error ? error.issues.slice(0, 3).map((i) => `${i.path.join('.')}: ${i.message}`).join('; ') : fallback;
 }
