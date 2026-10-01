@@ -1,5 +1,11 @@
 # BilalAI: Implementation Plan
 
+> **Status:** implemented. See `README.md` for setup and usage. Changes from this plan:
+> - Added `/config adjust` to shift individual prayer times to match a local mosque timetable.
+> - Dropped the per-guild `volume` setting. Adjusting volume would mean decoding and re-encoding every clip; set the level in the clip files instead.
+> - Ending clips use the "ending soon" wording (no number), as recommended in section 7.
+> - Default calculation method is Muslim World League (3).
+
 A Discord bot that announces the five daily prayers in voice. When a prayer time starts, it joins a voice channel (only if people are in it), plays a short clip such as "Dhuhr has started," and leaves. A configurable number of minutes before that prayer's window closes, it does the same with an "ending soon" warning. Prayer times are pulled from the Aladhan API for a configured location. Slash commands let admins view the schedule, pause the bot, and toggle individual prayers.
 
 ---

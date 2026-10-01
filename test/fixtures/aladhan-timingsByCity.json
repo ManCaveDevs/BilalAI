@@ -1,0 +1,35 @@
+{
+  "code": 200,
+  "status": "OK",
+  "data": {
+    "timings": {
+      "Fajr": "2026-10-01T05:28:00+01:00",
+      "Sunrise": "2026-10-01T07:03:00+01:00",
+      "Dhuhr": "2026-10-01T12:50:00+01:00",
+      "Asr": "2026-10-01T15:51:00+01:00",
+      "Sunset": "2026-10-01T18:39:00+01:00",
+      "Maghrib": "2026-10-01T18:39:00+01:00",
+      "Isha": "2026-10-01T20:05:00+01:00",
+      "Imsak": "2026-10-01T05:18:00+01:00",
+      "Midnight": "2026-10-02T00:51:00+01:00",
+      "Firstthird": "2026-10-01T22:55:00+01:00",
+      "Lastthird": "2026-10-02T02:47:00+01:00"
+    },
+    "date": {
+      "readable": "01 Oct 2026",
+      "timestamp": "1790834400",
+      "gregorian": { "date": "01-10-2026", "format": "DD-MM-YYYY", "day": "01" },
+      "hijri": { "date": "19-04-1448", "day": "19", "month": { "number": 4, "en": "Rabī' al-thānī" }, "year": "1448" }
+    },
+    "meta": {
+      "latitude": 51.5073219,
+      "longitude": -0.1276474,
+      "timezone": "Europe/London",
+      "method": { "id": 3, "name": "Muslim World League" },
+      "latitudeAdjustmentMethod": "ANGLE_BASED",
+      "midnightMode": "STANDARD",
+      "school": "STANDARD",
+      "offset": {}
+    }
+  }
+}
